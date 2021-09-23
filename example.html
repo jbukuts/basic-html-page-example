@@ -27,6 +27,11 @@
     }
     </style>
 
+    <!-- contained with the body tage are all the elements we'll show on the page -->
+    <!-- there are a lot of them and it can get very complex when we add styles to the mix -->
+    
+    <!-- CSS Documentation: https://developer.mozilla.org/en-US/docs/Web/CSS -->
+    <!-- HTML Help: https://www.w3schools.com/html/ -->
     <body>
         <!-- three elements -->
         <!-- these ids and classes help us style -->
@@ -37,6 +42,9 @@
         <h3 id="time" class="center" style="color: blue;">0</h3>
     </body>
 
+    <!-- JS in its vanilla form is a non-typed languange with a lot of interesting features -->
+    <!-- notice how when declaring a variable we can used const or var -->
+    <!-- we can create functions that we can call with parameters as well or even objects -->
     <script>
         // reference the object in the DOM
         // we can do both id and class
@@ -89,10 +97,17 @@
 
         // get the current date
         const d = new Date();
-
-        // now we can use function calls
+        
+        // this is an object
+        // we can use function calls
         // to the date object to get various things
-        dateHeadline.innerHTML = `Today is ${daysOfWeek[d.getDay()]}`;
+        const fullDate = {
+            weekDay: daysOfWeek[d.getDay()],
+            month: d.getMonth()
+        }
+
+        // and now edit the element with the text we want
+        dateHeadline.innerHTML = `Today is ${fullDate.weekDay}`;
         
         // we can also change style of DOM elements here
         dateHeadline.style.color = 'red';
