@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>TEST PAGE</title>
+    </head>
+
+    <style type="text/css">
+    /** this is how we style elements **/
+    #header {
+        color: green
+    }
+
+    /** we can reference multiple at once **/
+    #date, #time {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    /** notice how one style can affect all within the class **/
+    .center {
+        text-align: center;
+    }
+    </style>
+
+    <body>
+        <!-- three elements -->
+        <!-- these ids and classes help us style -->
+        <h1 id="header" class="center">THIS IS A HEADER</h1>
+        <h2 id="date" class="center"></h2>
+
+        <!-- inline style is a thing too -->
+        <h3 id="time" class="center" style="color: blue;">0</h3>
+    </body>
+
+    <script>
+        // reference the object in the DOM
+        // we can do both id and class
+        const dateHeadline = document.getElementById('date');
+
+        // notice how since multiple elements share a class name
+        // we have to reference the index of the one we want
+        // based on how it appears in the DOM
+        const timeHeadline = document.getElementsByClassName('center')[2];
+        
+        var counter = 0;
+
+        // a function to increment a global value
+        function incrementCounter() {
+            // set timeout waits a period of time before executing
+            // the function contained
+            // the second param is in ms
+            // so here we wait 1s
+            setTimeout(() => {
+                // increment
+                counter++;
+
+                // conditional
+                if (counter > 9)
+                    counter = 0;
+
+                // change DOM element's text
+                timeHeadline.innerHTML = counter;
+
+                // we call the parent function
+                // ensentially infintitely every second
+                incrementCounter();
+            }, 1000);
+        };
+
+        // for this counter to start
+        // we need an initial call
+        incrementCounter();
+
+        // an array
+        const daysOfWeek = [
+            'Sun',
+            'Mon',
+            'Tue',
+            'Wed',
+            'Thur',
+            'Fri',
+            'Sat'
+        ]
+
+        // get the current date
+        const d = new Date();
+
+        // now we can use function calls
+        // to the date object to get various things
+        dateHeadline.innerHTML = `Today is ${daysOfWeek[d.getDay()]}`;
+        
+        // we can also change style of DOM elements here
+        dateHeadline.style.color = 'red';
+    </script>
+</html>
